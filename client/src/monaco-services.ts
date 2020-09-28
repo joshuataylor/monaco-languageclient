@@ -3,14 +3,13 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 import { MonacoToProtocolConverter, ProtocolToMonacoConverter } from "./monaco-converter";
-import { MonacoCommands } from './monaco-commands';
 import { MonacoLanguages } from "./monaco-languages";
 import { MonacoWorkspace } from "./monaco-workspace";
 import { ConsoleWindow } from "./console-window";
 import { Services } from "./services";
 
 export interface MonacoServices extends Services {
-    commands: MonacoCommands
+    // commands: MonacoCommands
     languages: MonacoLanguages
     workspace: MonacoWorkspace
     window: ConsoleWindow
@@ -24,7 +23,7 @@ export namespace MonacoServices {
         const m2p = new MonacoToProtocolConverter();
         const p2m = new ProtocolToMonacoConverter();
         return {
-            commands: new MonacoCommands(editor),
+            // commands: new MonacoCommands(editor),
             languages: new MonacoLanguages(p2m, m2p),
             workspace: new MonacoWorkspace(p2m, m2p, options.rootUri),
             window: new ConsoleWindow()
