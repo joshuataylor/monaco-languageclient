@@ -83,7 +83,7 @@ export class MonacoLanguages implements Languages {
                 const result = await provider.provideCompletionItems(params, token);
                 return result && this.p2m.asCompletionResult(result, defaultRange);
             },
-            resolveCompletionItem: provider.resolveCompletionItem ? async (model, position, item, token) => {
+            resolveCompletionItem: provider.resolveCompletionItem ? async (item, token) => {
                 const protocolItem = this.m2p.asCompletionItem(item);
                 const resolvedItem = await provider.resolveCompletionItem!(protocolItem, token);
                 if (resolvedItem) {

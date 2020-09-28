@@ -13,10 +13,10 @@ import {
 } from "./services";
 import * as ServicesModule from "./services"
 import { DiagnosticSeverity } from "vscode-languageserver-protocol";
+import { Uri } from "vscode";
 
 export function createVSCodeApi(servicesProvider: Services.Provider): typeof vscode {
     const unsupported = () => { throw new Error('unsupported') };
-    const Uri: typeof vscode.Uri = URI;
     class CompletionItem implements vscode.CompletionItem {
         constructor(public label: string, public kind?: vscode.CompletionItemKind) { }
     }
@@ -788,6 +788,9 @@ export function createVSCodeApi(servicesProvider: Services.Provider): typeof vsc
         showInputBox: unsupported,
         createWebviewPanel: unsupported,
         setStatusBarMessage: unsupported,
+        // onDidChangeActiveColorTheme: unsupported,
+        // registerCustomEditorProvider: unsupported,
+        // registerTerminalLinkProvider: unsupported,
         withScmProgress: unsupported,
         createStatusBarItem: unsupported,
         createTerminal: unsupported,
@@ -800,6 +803,9 @@ export function createVSCodeApi(servicesProvider: Services.Provider): typeof vsc
         get visibleTextEditors() {
             return unsupported();
         },
+        // get activeColorTheme() {
+        //     return unsupported();
+        // },
         onDidChangeActiveTextEditor: unsupported,
         onDidChangeVisibleTextEditors: unsupported,
         onDidChangeTextEditorSelection: unsupported,
